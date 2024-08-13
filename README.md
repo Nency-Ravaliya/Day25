@@ -87,4 +87,112 @@ This document outlines the steps to implement a custom IAM policy to grant speci
 
 The custom IAM policy has been implemented to grant the "DevTeamRole" the necessary permissions to list and read objects from the `application-logs` S3 bucket. The policy restricts all other actions to ensure the security and integrity of the bucket's contents.
 
+==================================================
+
+# Multi-Tier Architecture Solution Estimation
+
+## Overview
+
+This document outlines the design and cost estimation process for a scalable web application architecture. The architecture includes an Application Load Balancer, EC2 instances for the application tier, and an RDS instance for the database tier. The solution is designed to support up to 100,000 concurrent users.
+
+## 1. Define the Architecture
+
+### Components Required
+
+1. **Application Load Balancer (ALB)**: Distributes incoming traffic across multiple EC2 instances.
+2. **EC2 Instances**: Hosts the application servers to handle user requests.
+3. **RDS Instance**: Manages the database for storing and retrieving application data.
+
+### Expected Traffic and Configuration
+
+- **Load Balancer**: Handles incoming traffic and distributes it efficiently.
+- **EC2 Instances**: Select instance types based on expected load and application requirements.
+- **RDS Instance**: Choose a configuration that supports the expected data workload and performance needs.
+
+## 2. Select AWS Services
+
+### Application Load Balancer
+
+- **Service**: AWS Application Load Balancer
+- **Configuration**: Set up to distribute incoming traffic across multiple EC2 instances.
+
+### EC2 Instances
+
+- **Instance Type**: `t3.medium`
+  - **vCPUs**: 2
+  - **Memory**: 8 GiB
+  - **Usage**: Suitable for moderate application workloads and balancing between cost and performance.
+
+### RDS Instance
+
+- **Instance Type**: `db.m5.large`
+  - **vCPUs**: 2
+  - **Memory**: 8 GiB
+  - **Usage**: Provides balanced compute and memory resources for the database tier.
+
+## 3. Estimate Costs Using AWS Pricing Calculator
+
+1. **Navigate to the AWS Pricing Calculator**:
+   - Go to the [AWS Pricing Calculator](https://calculator.aws/).
+
+2. **Add Components to the Estimate**:
+
+   - **Application Load Balancer**:
+     - Configure the load balancer based on expected traffic.
+     - Include cost factors such as number of hours and data processed.
+
+   - **EC2 Instances**:
+     - Select `t3.medium` instances.
+     - Specify the number of instances required (e.g., 10 instances) and estimate usage hours.
+     - Consider additional costs such as EBS storage and data transfer.
+
+   - **RDS Instance**:
+     - Choose `db.m5.large` instance.
+     - Specify storage requirements and estimated usage hours.
+     - Include costs for backups and data transfer.
+
+3. **Configure Service Specifications**:
+   - Adjust settings based on expected load and storage requirements.
+
+4. **Review the Estimate**:
+   - Review the total estimated monthly cost for all components.
+
+## 4. Document and Analyze the Estimate
+
+### Total Estimated Monthly Cost
+
+- **Load Balancer Cost**: [Specify the cost]
+- **EC2 Instances Cost**: [Specify the cost]
+- **RDS Instance Cost**: [Specify the cost]
+- **Total Estimated Cost**: [Specify the total cost]
+
+### Cost-Saving Measures
+
+- **Reserved Instances**: Consider purchasing reserved instances for EC2 and RDS to save on long-term costs.
+- **Auto Scaling**: Implement Auto Scaling for EC2 instances to handle traffic variations and optimize usage.
+- **Storage Optimization**: Review storage needs and consider using cost-effective storage options.
+
+## 5. Prepare a Report
+
+### Architecture Design
+
+- **Diagram**: [Include an architecture diagram if available]
+- **Components**: Application Load Balancer, EC2 instances, RDS instance
+
+### Cost Estimate
+
+- **Detailed Costs**: Breakdown of costs for each component
+- **Total Estimated Monthly Cost**: [Specify the total cost]
+
+### Recommendations
+
+- **Performance**: Ensure adequate resources to handle up to 100,000 concurrent users.
+- **Cost Optimization**: Implement reserved instances, Auto Scaling, and storage optimization strategies.
+- **Scalability**: Plan for future growth and scalability based on traffic projections and application needs.
+
+## Conclusion
+
+The multi-tier architecture has been designed to support a scalable web application with an estimated cost for the required AWS services. The recommendations provided will help maintain performance while optimizing costs and accommodating future growth.
+
+
 
